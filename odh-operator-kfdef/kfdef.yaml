@@ -7,15 +7,15 @@ metadata:
   namespace: odh-deployment
 spec:
   applications:
-    - kustomizeConfig:
-        parameters:
-          # Note: The admin username is admin
-          - name: SUPERSET_ADMIN_PASSWORD
-            value: admin
-        repoRef:
-          name: manifests
-          path: superset
-      name: superset
+    #  - kustomizeConfig:
+    #      parameters:
+    #        # Note: The admin username is admin
+    #        - name: SUPERSET_ADMIN_PASSWORD
+    #          value: admin
+    #      repoRef:
+    #        name: manifests
+    #        path: superset
+    #    name: superset
     - kustomizeConfig:
         repoRef:
           name: manifests
@@ -36,22 +36,22 @@ spec:
           name: manifests
           path: jupyterhub/notebook-images
       name: notebook-images
-    - kustomizeConfig:
-        parameters:
-        - name: namespace
-          value: odh-deployment
-        repoRef:
-          name: manifests
-          path: prometheus/cluster
-      name: prometheus-cluster
-    - kustomizeConfig:
-        parameters:
-        - name: namespace
-          value: odh-deployment
-        repoRef:
-          name: manifests
-          path: prometheus/operator
-      name: prometheus-operator
+        #  - kustomizeConfig:
+        #      parameters:
+        #      - name: namespace
+        #        value: odh-deployment
+        #      repoRef:
+        #        name: manifests
+        #        path: prometheus/cluster
+        #    name: prometheus-cluster
+        #  - kustomizeConfig:
+        #      parameters:
+        #      - name: namespace
+        #        value: odh-deployment
+        #      repoRef:
+        #        name: manifests
+        #        path: prometheus/operator
+        #    name: prometheus-operator
   repos:
     - name: manifests
       uri: 'https://github.com/opendatahub-io/odh-manifests/tarball/v0.8.0'
