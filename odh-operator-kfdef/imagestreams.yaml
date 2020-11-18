@@ -1,0 +1,22 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    opendatahub.io/notebook-image: "true"
+  annotations:
+    opendatahub.io/notebook-image-url: "https://github.com/martinpovolny/colaboratory"
+    opendatahub.io/notebook-image-name: "Colaboratory notebooks image"
+    opendatahub.io/notebook-image-desc: "Jupyter notebook image with colaboratory notebooks"
+  name: colaboratory-notebooks
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - annotations:
+      openshift.io/imported-from: 'quay.io/martin_povolny/colaboratory'
+    from:
+      kind: DockerImage
+      name: 'quay.io/martin_povolny/colaboratory:latest'
+    importPolicy:
+      scheduled: true
+    name: "latest"
